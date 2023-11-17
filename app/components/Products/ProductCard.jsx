@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { IoCartOutline } from "react-icons/io5";
 const ProductCard = (product) => {
-  const { details, cPrice, pPrice, img, off } = product.product;
+  const { details, cPrice, pPrice, img, off, id } = product.product;
   console.log(details);
   return (
     <div className="w-full relative rounded-[15px] bg-white border border-gray-200  shadow dark:bg-gray-800 dark:border-gray-700 ">
@@ -21,7 +21,7 @@ const ProductCard = (product) => {
           </sub>
         </p>
         <Link
-          href="#"
+          href={`product/${id}`}
           className="inline-flex justify-center gap-2 items-center w-full px-3 py-2 text-sm font-medium text-center text-white bg-[#FF4747] rounded-lg hover:bg-red-500 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         >
           <span>

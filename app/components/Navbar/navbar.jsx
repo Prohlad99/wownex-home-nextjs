@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { FaCaretDown } from "react-icons/fa6";
 import { IoMdClose } from "react-icons/io";
+import { IoCallOutline } from "react-icons/io5";
 import { RxHamburgerMenu } from "react-icons/rx";
 //top bar
 export const Top = () => {
@@ -24,7 +25,9 @@ export const Middle = () => {
     <div className="flex items-center justify-between gap-4 pr-4 md:pr-0 bg-white">
       <div className="h-[70px]  w-full grid grid-cols-12 bg-white md:px-10 px-1">
         <div className="col-span-2 hidden md:block  place-self-center">
-          <img className="" src="/assets/logo/logo.png" alt="brand logo" />
+          <Link href="/">
+            <img className="" src="/assets/logo/logo.png" alt="brand logo" />
+          </Link>
         </div>
         <div className="col-span-11 md:col-span-9  place-self-center w-full justify-self-center flex justify-center">
           <div className=" border-[1px] border-[#FF4747] rounded-[15px] pl-1 w-[80%] h-[48px] flex justify-between">
@@ -63,86 +66,105 @@ export const Navbar = () => {
     setIsNavOpen(!isNavOpen);
   };
   return (
-    <div className="bg-[#FF4747]">
-      <div
-        className={`h-[50px] flex justify-between items-center bg-blue-200 md:mx-10 text-white  relative`}
-      >
-        <div className="md:hidden">
-          <img
-            className="w-[150px]"
-            src="/assets/logo/logo.png"
-            alt="brand logo"
-          />
-        </div>
-        <ul
-          className={`p-4 md:h-full items-center border-t-[1px] z-10 border-blue-400  bg-[#FF4747]  md:flex md:justify-between absolute w-full top-[50px] -left-full md:left-0 md:top-0 md:border-none transition-all ease-in-out delay-200 ${
-            isNavOpen ? "left-0" : ""
-          }`}
+    <div>
+      <Top />
+      <Middle />
+      <div className="bg-[#FF4747]">
+        <div
+          className={`h-[50px] flex justify-between items-center bg-blue-200 md:mx-10 text-white  relative`}
         >
-          <li>
-            <p
-              className="md:hidden my-2 flex  gap-2 items-center"
-              onClick={handleDropDown}
-            >
-              <span>All Categories </span>
-              <span
-                className={`text-white text-xl ${
-                  isCategoryOpen ? "rotate-180" : ""
-                }`}
+          <div className="md:hidden">
+            <Link href="/">
+              <img
+                className="w-[150px]"
+                src="/assets/logo/logo.png"
+                alt="brand logo"
+              />
+            </Link>
+          </div>
+          <ul
+            className={`p-4 md:h-full items-center border-t-[1px] z-10 border-blue-400  bg-[#FF4747]  md:flex md:justify-between absolute w-full top-[50px] -left-full md:left-0 md:top-0 md:border-none transition-all ease-in-out delay-200 ${
+              isNavOpen ? "left-0" : ""
+            }`}
+          >
+            <li>
+              <p
+                className="md:hidden my-2 flex  gap-2 items-center"
+                onClick={handleDropDown}
               >
-                <FaCaretDown />
-              </span>
-            </p>
-            <p className="hidden md:block ">
-              <span className="flex  gap-2 items-center">
-                <span>All Categories</span>
-                <span className="text-white text-xl">
+                <span>All Categories </span>
+                <span
+                  className={`text-white text-xl ${
+                    isCategoryOpen ? "rotate-180" : ""
+                  }`}
+                >
                   <FaCaretDown />
                 </span>
-              </span>
-            </p>
-            <ul
-              className={`bg-red-300 rounded-[15px] p-4 ml-4 transition-all ease-in-out delay-300 ${
-                isCategoryOpen ? "block" : "hidden"
-              }`}
-            >
-              {Items.map((item, key) => (
+              </p>
+              <p className="hidden md:block ">
+                <span className="flex  gap-2 items-center">
+                  <span>All Categories</span>
+                  <span className="text-white text-xl">
+                    <FaCaretDown />
+                  </span>
+                </span>
+              </p>
+              <ul
+                className={`bg-red-300 rounded-[15px] p-4 ml-4 transition-all ease-in-out delay-300 ${
+                  isCategoryOpen ? "block" : "hidden"
+                }`}
+              >
+                {Items.map((item, key) => (
+                  <li className="my-2">
+                    <Link href="#">
+                      <span className="flex items-center gap-2">
+                        <span>{item.icon}</span>
+                        <span>{item.name}</span>
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </li>
+            <li>
+              <ul className="md:flex gap-6">
                 <li className="my-2">
-                  <Link href="#">
-                    <span className="flex items-center gap-2">
-                      <span>{item.icon}</span>
-                      <span>{item.name}</span>
-                    </span>
-                  </Link>
+                  <Link href="/">Home</Link>
                 </li>
-              ))}
-            </ul>
-          </li>
-          <li>
-            <ul className="md:flex gap-6">
-              <li className="my-2">Home</li>
-              <li className="my-2">Flash Sale</li>
-              <li className="my-2">Hot Product</li>
-              <li className="my-2">Shop</li>
-              <li className="my-2">
-                <p>
-                  <span>Hotline:</span>
-                  01710-696950
-                </p>
-              </li>
-            </ul>
-          </li>
-        </ul>
-        <div className="mr-2 md:hidden">
-          {isNavOpen ? (
-            <button onClick={handleNav} className="text-4xl text-black">
-              <IoMdClose />
-            </button>
-          ) : (
-            <button onClick={handleNav} className="text-4xl text-black">
-              <RxHamburgerMenu />
-            </button>
-          )}
+                <li className="my-2">
+                  <Link href="#">Flash Sale</Link>
+                </li>
+                <li className="my-2">
+                  <Link href="#">Hot Product</Link>
+                </li>
+                <li className="my-2">
+                  <Link href="#">Shop</Link>
+                </li>
+                <li className="my-2">
+                  <p className="flex items-center gap-1">
+                    <span className="flex items-center gap-2 font-thin">
+                      <span>
+                        <IoCallOutline />
+                      </span>{" "}
+                      Hotline:
+                    </span>
+                    01710-696950
+                  </p>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <div className="mr-2 md:hidden">
+            {isNavOpen ? (
+              <button onClick={handleNav} className="text-4xl text-black">
+                <IoMdClose />
+              </button>
+            ) : (
+              <button onClick={handleNav} className="text-4xl text-black">
+                <RxHamburgerMenu />
+              </button>
+            )}
+          </div>
         </div>
       </div>
     </div>
