@@ -2,11 +2,10 @@ import Link from "next/link";
 import { IoCartOutline } from "react-icons/io5";
 const ProductCard = (product) => {
   const { details, cPrice, pPrice, img, off, id } = product.product;
-  console.log(details);
   return (
     <div className="w-full relative rounded-[15px] bg-white border border-gray-200  shadow dark:bg-gray-800 dark:border-gray-700 ">
       <a href="#">
-        <img className="rounded-t-[15px] w-full" src={img} alt="" />
+        <img className="rounded-t-[15px] w-full" src={img[0]} alt="" />
       </a>
       <div className="p-2">
         <a href="#">

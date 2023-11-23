@@ -1,23 +1,32 @@
-import Footer from "./components/Footer/footer";
-import { Hero } from "./components/Hero/hero";
-import { Navbar } from "./components/Navbar/navbar";
-import Allproducts from "./components/Products/Allproducts";
-import DiscountBanner from "./components/Products/DiscountBanner";
-import FlashSale from "./components/Products/FlashSale";
-import HotProduct from "./components/Products/Hotproduct";
-import NewProducts from "./components/Products/NewProducts";
 
-export default function Home() {
+import Footer from './components/Footer/footer';
+import { Hero } from './components/Hero/hero';
+import { Navbar } from './components/Navbar/navbar';
+import Allproducts from './components/Products/Allproducts';
+import DiscountBanner from './components/Products/DiscountBanner';
+import FlashSale from './components/Products/FlashSale';
+import HotProduct from './components/Products/Hotproduct';
+import NewProducts from './components/Products/NewProducts';
+
+async function getProducts(){
+  const res = await fetch("http://localhost:5000/products");
+  return res.json()
+}
+
+export default async function Home() {
+  const data = await getProducts()
+
   return (
-   <main>
-    <Navbar/>
-    <Hero/>
-    <FlashSale/>
-    <HotProduct/>
-    <NewProducts/>
-    <DiscountBanner/>
-    <Allproducts/>
-    <Footer/>
-   </main>
-  )
+    <main>
+      <Navbar />
+      <Hero />
+      <FlashSale />
+      <HotProduct />
+      <NewProducts />
+      <DiscountBanner />
+      <Allproducts />
+      <Footer />
+      {/* <Test/> */}
+    </main>
+  );
 }

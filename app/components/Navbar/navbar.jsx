@@ -1,5 +1,6 @@
 "use client";
 
+import { useCartStore } from "@/app/store/Cart";
 import { Items } from "@/utilities/nav_items";
 import Link from "next/link";
 import { useState } from "react";
@@ -21,6 +22,8 @@ export const Top = () => {
 
 // middle
 export const Middle = () => {
+  const { cartItems } = useCartStore();
+
   return (
     <div className="flex items-center justify-between gap-4 pr-4 md:pr-0 bg-white">
       <div className="h-[70px]  w-full grid grid-cols-12 bg-white md:px-10 px-1">
@@ -42,12 +45,14 @@ export const Middle = () => {
           </div>
         </div>
         <div className="col-span-1 place-self-center justify-self-end">
-          <div className="relative">
-            <img className="w-[35px]" src="/assets/icons/cart.png" alt="" />
-            <p className="bg-[#FF4747] rounded-full flex justify-center items-center w-[20px] h-[20px] text-white text-[12px] absolute top-0 -right-2">
-              01
-            </p>
-          </div>
+          <Link href="/cart">
+            <div className="relative">
+              <img className="w-[35px]" src="/assets/icons/cart.png" alt="" />
+              <p className="bg-[#FF4747] rounded-full flex justify-center items-center w-[20px] h-[20px] text-white text-[12px] absolute top-0 -right-2">
+                {cartItems.length}
+              </p>
+            </div>
+          </Link>
         </div>
       </div>
     </div>

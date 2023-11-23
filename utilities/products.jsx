@@ -4,7 +4,12 @@ export const products = [
     details: "Original Leather Money bag for man",
     cPrice: 300,
     pPrice: 1000,
-    img: "./assets/products/Product1.png",
+    img: [
+      "./assets/products/Product1.png",
+      "./assets/products/Product1.png",
+      "./assets/products/Product1.png",
+      "./assets/products/Product1.png",
+    ],
     off: 70,
   },
   {
@@ -12,7 +17,12 @@ export const products = [
     details: "Ladies Hand Bag - Original leather",
     cPrice: 450,
     pPrice: 1600,
-    img: "./assets/products/Product2.png",
+    img: [
+      "./assets/products/Product2.png",
+      "./assets/products/Product2.png",
+      "./assets/products/Product2.png",
+      "./assets/products/Product2.png",
+    ],
     off: 80,
   },
   {
@@ -20,7 +30,12 @@ export const products = [
     details: "Neckless with Ear ring metal with stone",
     cPrice: 340,
     pPrice: 2500,
-    img: "./assets/products/Product3.png",
+    img: [
+      "./assets/products/Product3.png",
+      "./assets/products/Product3.png",
+      "./assets/products/Product3.png",
+      "./assets/products/Product3.png",
+    ],
     off: 60,
   },
   {
@@ -28,7 +43,12 @@ export const products = [
     details: "Floor mop - Plastic handle with cotton fiber",
     cPrice: 350,
     pPrice: 1100,
-    img: "./assets/products/Product4.png",
+    img: [
+      "./assets/products/Product4.png",
+      "./assets/products/Product4.png",
+      "./assets/products/Product4.png",
+      "./assets/products/Product4.png",
+    ],
     off: 30,
   },
   {
@@ -36,7 +56,12 @@ export const products = [
     details: "Dragon toy for all babies, best quality",
     cPrice: 960,
     pPrice: 1500,
-    img: "./assets/products/Product5.png",
+    img: [
+      "./assets/products/Product5.png",
+      "./assets/products/Product5.png",
+      "./assets/products/Product5.png",
+      "./assets/products/Product5.png",
+    ],
     off: 70,
   },
 ];

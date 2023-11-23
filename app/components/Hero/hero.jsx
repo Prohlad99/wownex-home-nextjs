@@ -16,7 +16,6 @@ import { Items } from "../../../utilities/nav_items";
 
 export const Hero = () => {
   const [images, setImages] = useState([img1, img2, img3, img4, img5]);
-  console.log(Items);
   return (
     <div>
       <div className="grid grid-cols-12  gap-6 mt-4 h-[301px] md:mx-10 mx-2">

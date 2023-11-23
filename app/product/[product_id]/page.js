@@ -1,8 +1,8 @@
 "use client";
 import Footer from "@/app/components/Footer/footer";
 import { Navbar } from "@/app/components/Navbar/navbar";
-import NewProducts from "@/app/components/Products/NewProducts";
 import RelatedProducts from "@/app/components/Products/RelatedProducts";
+import { useCartStore } from "@/app/store/Cart";
 import { useState } from "react";
 import { CiDeliveryTruck } from "react-icons/ci";
 import { IoCallOutline, IoCartOutline, IoLogoWhatsapp } from "react-icons/io5";
@@ -17,6 +17,8 @@ const ProductDetails = () => {
   const [deliveryDetails, setDeliveryDetails] = useState(false);
   const [policy, setPolicy] = useState(false);
   const[indicator,setIndicator] = useState(true);
+ 
+  const  addToCart  = useCartStore((state) => state.addToCart);
 
   const handlePolicy=(value)=>{
     if(value==="details"){
@@ -94,7 +96,16 @@ const ProductDetails = () => {
               <button className="bg-[#FF4747] w-full my-4 py-2 text-white rounded-full font-bold">
                 Order Now
               </button>
-              <button className="bg-[#FFE6E7] w-full flex justify-center items-center gap-2 mb-4 pt-2 py-2 text-red-500 rounded-full font-bold">
+              <button
+                onClick={() =>
+                  addToCart({
+                    id: Date.now(),
+                    image: "/assets/products/Product1.png",
+                    name:"Kitchen Product"
+                  })
+                }
+                className="bg-[#FFE6E7] w-full flex justify-center items-center gap-2 mb-4 pt-2 py-2 text-red-500 rounded-full font-bold"
+              >
                 <span className="font-bold">
                   <IoCartOutline />
                 </span>
@@ -259,9 +270,9 @@ const ProductDetails = () => {
             )}
           </div>
         </div>
-        
+
         <div className="col-span-12 h-[300px]">
-          <RelatedProducts/>
+          <RelatedProducts />
         </div>
       </div>
       <Footer />
