@@ -1,10 +1,8 @@
 "use client";
 import { useCartStore } from "@/app/store/Cart";
-import { useProductStore } from "@/app/store/Products";
 import { products } from "./../../../utilities/products";
 const CartItem = () => {
   const { cartItems } = useCartStore();
-  const { productItems } = useProductStore();
 
   return (
     <div>

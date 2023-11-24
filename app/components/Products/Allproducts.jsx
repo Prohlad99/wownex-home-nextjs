@@ -1,9 +1,7 @@
 "use client";
-import { useProductStore } from "@/app/store/Products";
 import { products } from "@/utilities/products";
 import ProductCard from "./ProductCard";
 const Allproducts = () => {
-  const { productItems } = useProductStore();
   return (
     <div className=" w-full h-auto px-2 md:px-10 mt-6">
       <div className="grid items-center h-[50px] border-b-[1px]  bg-white px-4 rounded-t-[15px] border-blue-400">
