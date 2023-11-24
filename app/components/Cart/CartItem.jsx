@@ -38,7 +38,7 @@ const CartItem = () => {
             </h1>
             <div className="flex mt-3 mb-4">
               <button
-                onClick={() => removeFromCart(product.id)}
+                onClick={() => console.log("Hello")}
                 className="border-l-[1px] border-b-[1px] border-t-[1px] rounded-l-md border-[#95A0A7] md:px-4 px-1 py-1 bg-black text-white"
               >
                 -
@@ -47,7 +47,7 @@ const CartItem = () => {
                 {product.quantity ? product.quantity : 1}
               </p>
               <button
-                onClick={() => addToCart(product)}
+                onClick={() => console.log("Hi")}
                 className="border-r-[1px] border-b-[1px] border-t-[1px] rounded-r-md border-[#95A0A7] md:px-4 px-1 py-1 bg-green-400"
               >
                 +

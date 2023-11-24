@@ -1,5 +1,6 @@
 "use client";
 import { products } from "@/utilities/products";
+import Link from "next/link";
 import ProductCard from "./ProductCard";
 const FlashSale = () => {
   return (
@@ -19,7 +20,7 @@ const FlashSale = () => {
           </div>
           <div className="col-span-4 justify-self-end">
             <button className="px-4 py-1 rounded-full border-[1px] border-[#FF4747] text-[#FF4747] ">
-              View All
+              <Link href="/category">View All</Link>
             </button>
           </div>
         </div>

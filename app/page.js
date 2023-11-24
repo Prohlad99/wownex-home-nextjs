@@ -8,13 +8,8 @@ import FlashSale from './components/Products/FlashSale';
 import HotProduct from './components/Products/Hotproduct';
 import NewProducts from './components/Products/NewProducts';
 
-async function getProducts(){
-  const res = await fetch("http://localhost:5000/products");
-  return res.json()
-}
 
 export default async function Home() {
-  const data = await getProducts()
 
   return (
     <main>

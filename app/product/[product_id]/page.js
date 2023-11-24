@@ -97,13 +97,7 @@ const ProductDetails = () => {
                 Order Now
               </button>
               <button
-                onClick={() =>
-                  addToCart({
-                    id: Date.now(),
-                    image: "/assets/products/Product1.png",
-                    name:"Kitchen Product"
-                  })
-                }
+                onClick={() =>console.log("Hello")}
                 className="bg-[#FFE6E7] w-full flex justify-center items-center gap-2 mb-4 pt-2 py-2 text-red-500 rounded-full font-bold"
               >
                 <span className="font-bold">

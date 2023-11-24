@@ -15,45 +15,89 @@ const OrderSummary = ({ review }) => {
   return (
     <div>
       {/* container  */}
-      <div className="bg-[#FC5B5B] md:w-[340px] w-[300px] text-white grid justify-center p-2 rounded-md">
+      <div className="bg-[#FC5B5B] md:w-[340px] w-full  text-white grid justify-center p-2 rounded-md">
         {/* order details  */}
-        <div className="tracking-widest leading-8">
-          <h1 className="text-center text-2xl underline mb-8">Order Summary</h1>
-          <p className="my-2">Selected Items: {cartItems.length}</p>
-          <p className="my-2">Selected Products: {totalProduct}</p>
+        <div className="">
+          <h1 className="text-center text-2xl bg-stone-300 py-2 rounded-md text-black">
+            Customer Information
+          </h1>
+          <p></p>
+          <p className="my-2 font-light text-center italic">
+            To confirm the order enter your name, address, mobile number and
+            click on confirm order button
+          </p>
 
-          <p className="my-2">Total Price: ${totalPrice}</p>
-          <p className="my-2">Total Shipping Charge: $5</p>
-          <p className="my-2">Tax: $114</p>
-          <h2 className="my-2 text-xl mb-6">
-            Grand Total: ${totalPrice + 5 + 114}
-          </h2>
-        </div>
+          <form class="max-w-sm mx-auto">
+            <div class="mb-5">
+              <label
+                for="name"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >
+                Your Name
+              </label>
+              <input
+                type="name"
+                id="name"
+                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                placeholder="ex: Md. Rafiq"
+                required
+              />
+            </div>
+            <div class="mb-5">
+              <label
+                for="phone"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >
+                Your Phone
+              </label>
+              <input
+                type="text"
+                id="phone"
+                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                required
+                placeholder="ex: 01933325548"
+              />
+            </div>
+            <div class="mb-5">
+              <label
+                for="address"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >
+                Your Full Address
+              </label>
+              <textarea
+                id="address"
+                rows="2"
+                class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Ex: Mirpur-10, Shawrapara, Iqbal Rd"
+              ></textarea>
+            </div>
+            <div class="mb-5">
+              <label
+                for="delivery_area"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >
+                Choose Delivery Area
+              </label>
+              <select
+                id="delivery_area"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              >
+                <option value="in_dhaka" selected>
+                  Home Delivery(In Dhaka)
+                </option>
+                <option value="out_dhaka">Home Delivery(Outside Dhaka)</option>
+              </select>
+            </div>
 
-        {/* button  */}
-        {review ? (
-          <div className="grid">
-            <button className="border-[1px] border-l-indigo-400 bg-green-700 py-2 rounded-md my-2">
-              Confirm Order
-            </button>
-          </div>
-        ) : (
-          <div className="grid">
             <button
-              onClick={() => {
-                if (window.confirm("Are you want to clear your cart?")) {
-                  clearCart();
-                }
-              }}
-              className="border-[1px] border-l-indigo-400 bg-black py-2 rounded-md my-2"
+              type="submit"
+              class="text-white w-full bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
-              Clear Cart
+              Confirm You Order
             </button>
-            <button className="border-[1px] border-l-indigo-400 bg-green-700 py-2 rounded-md my-2">
-              <Link href="/checkout">Proceed Checkout</Link>
-            </button>
-          </div>
-        )}
+          </form>
+        </div>
       </div>
     </div>
   );
