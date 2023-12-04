@@ -1,21 +1,26 @@
 "use client";
-import { products } from "@/utilities/products";
+import Link from "next/link";
+import { useContext } from "react";
 import CartItem from "../components/Cart/CartItem";
 import EmptyCart from "../components/Cart/EmptyCart";
 import OrderSummary from "../components/Cart/OrderSummary";
-import Footer from "../components/Footer/footer";
-import { Navbar } from "../components/Navbar/navbar";
-import { useCartStore } from "../store/Cart";
-const Cart = () => {
-  const { cartItems } = useCartStore();
+import { CartContext } from "../context/CartStore";
 
+const Cart = () => {
+  const { cart, clearCart } = useContext(CartContext);
+  let selectedProducts = 0;
+  let price = 0.0;
+
+  for (let i = 0; i < cart?.length; i++) {
+    price += cart[i]?.cPrice * cart[i]?.quantity;
+    selectedProducts += cart[i]?.quantity;
+  }
   return (
     <div>
-      <Navbar />
-      {products?.length ? (
-        <div className="grid md:grid-cols-12 grid-cols-1  pt-[40px] md:h-[100vh] h-auto mb-4 justify-center ">
+      {cart?.length ? (
+        <div className="grid md:grid-cols-12 grid-cols-1 gap-4 pt-[40px] px-2 h-auto mb-4 justify-center ">
           {/* cart item  */}
-          <div className="grid md:col-span-8 col-span-full border-2 border-stone-400 rounded-lg p-2">
+          <div className="grid md:col-span-8  col-span-full border-2 border-stone-400 rounded-lg p-2">
             <div
               className={` h-[300px] md:h-[400px] scroll-smooth scroll-m-1 overflow-y-scroll overflow-x-hidden `}
             >
@@ -23,30 +28,57 @@ const Cart = () => {
                 <CartItem />
               </div>
             </div>
-            <div className="mt-2 h-[200px] md:h-auto bg-slate-600 md:mx-10 mx-2 rounded-lg text-white">
-              <div className="flex justify-center gap-10 p-2 tracking-widest leading-8">
+            <div className="mt-2 h-auto md:h-auto bg-slate-600 md:mx-10 mx-2 rounded-lg text-white">
+              <div className="p-2 tracking-widest leading-8">
                 <div>
-                  <p>Selected Items: 4</p>
-                  <p>Selected Products: 10</p>
-                  <p>Total Price: 5454</p>
+                  <ul className="list-disc">
+                    <table>
+                      <tr>
+                        <td>
+                          <li>Selected Items: </li>
+                        </td>
+                        <td className="text-green-500 pl-4">{cart?.length}</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <li>Selected Products: </li>
+                        </td>
+                        <td className="text-green-500 pl-4">
+                          {selectedProducts}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <li>Tax: </li>
+                        </td>
+                        <td className="text-green-500 pl-4">0%</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <li>Total Price:</li>{" "}
+                        </td>
+                        <td className="text-green-500 pl-4">{price} ৳</td>
+                      </tr>
+                    </table>
+                    <h3 className="text-[#FC5B5B] text-[12px] font-bold font-serif">
+                      <span className="font-serif">NB:</span>Delivery Charge: In
+                      Dhaka-100৳ & Outside Dhaka-150৳
+                    </h3>
+                  </ul>
                 </div>
-                <div>
-                  <p>
-                    Delivery Charge: <span>In Dhaka-100</span>
-                    <br />
-                    <span> Outside Dhaka-150</span>
-                  </p>
-                  <p>Grand Total: 5483</p>
+                <div className="flex justify-between items-center md:mx-10 mx-2 sm:mx-4 mt-4">
+                  <Link href="/">
+                    <button className=" bg-blue-600 rounded-full text-sm py-1 px-2 text-white">
+                      Back to Shopping
+                    </button>
+                  </Link>
+                  <button
+                    onClick={clearCart}
+                    className=" bg-red-600 rounded-full text-sm py-1 px-2 text-white"
+                  >
+                    Clear Cart
+                  </button>
                 </div>
-              </div>
-
-              <div className="flex justify-between items-center mx-10">
-                <button className=" bg-blue-600 rounded-full py-2 px-4 py-1 px-2 text-white">
-                  Back to Shopping
-                </button>
-                <button className=" bg-red-600 rounded-full md:py-2 md:px-4 py-1 px-2 text-white">
-                  Clear Cart
-                </button>
               </div>
             </div>
           </div>
@@ -61,7 +93,6 @@ const Cart = () => {
       ) : (
         <EmptyCart />
       )}
-      <Footer />
     </div>
   );
 };

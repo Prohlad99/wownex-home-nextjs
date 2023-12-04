@@ -1,17 +1,21 @@
 "use client";
-import Footer from '../components/Footer/footer';
-import { Navbar } from '../components/Navbar/navbar';
+import { motion } from 'framer-motion';
 import { products } from './../../utilities/products';
 import ProductCard from './../components/Products/ProductCard';
+
+
 const Category = () => {
+  const productsAnimation = {
+    visible: { y: 0, opacity: 1, transition: { duration: 0.5 } },
+    hidden: { y: 200, opacity: 1 },
+  };
   return (
     <div>
-        <Navbar/>
       <div className=" w-full h-auto px-2 md:px-10 mt-6">
         <div className="grid items-center h-[50px] border-b-[1px]  bg-white px-4 rounded-t-[15px] border-blue-400">
           <div className="grid grid-cols-12 w-full">
             <div className="col-span-full md:flex justify-end gap-3">
-              <div className="justify-self-end">
+              <div className="justify-self-end  inline-block">
                 <select
                   id="sorting"
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -25,15 +29,36 @@ const Category = () => {
             </div>
           </div>
         </div>
-        <div className="grid grid-cols-2  md:grid-cols-5 gap-1 md:gap-4 bg-white p-4 rounded-b-[15px]">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-4  bg-white p-4 rounded-b-[15px]">
           {products.map((product, index) => (
-            <ProductCard key={index} product={product} />
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              variants={productsAnimation}
+              key={(index * Date.now()) / Math.random().toString()}
+            >
+              <ProductCard key={index} product={product} />
+            </motion.div>
           ))}
           {products.map((product, index) => (
-            <ProductCard key={index} product={product} />
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              variants={productsAnimation}
+              key={(index + Date.now()) / Math.random().toString()}
+            >
+              <ProductCard key={index} product={product} />
+            </motion.div>
           ))}
           {products.map((product, index) => (
-            <ProductCard key={index} product={product} />
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              variants={productsAnimation}
+              key={(index * Date.now()) + Math.random().toString()}
+            >
+              <ProductCard key={index} product={product} />
+            </motion.div>
           ))}
           <div className="col-span-full flex justify-center w-full mt-4">
             <button className="border-[1px] border-[#FF4747] rounded-full px-10 py-1 text-[#FF4747] font-bold">
@@ -42,7 +67,6 @@ const Category = () => {
           </div>
         </div>
       </div>
-      <Footer/>
     </div>
   );
 };

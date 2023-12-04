@@ -1,19 +1,8 @@
 "use client";
-import { useCartStore } from "@/app/store/Cart";
 
 const OrderSummary = ({ review }) => {
-  const { cartItems, clearCart } = useCartStore();
-  let totalProduct = 0;
-  let totalPrice = 0;
-  const counter = (product) => {
-    totalPrice += product.quantity * product.price;
-    totalProduct += product.quantity;
-  };
-
-  cartItems.forEach((product) => counter(product));
-
   return (
-    <div>
+    <div className="md:px-6 px-2 mt-[20px] md:mt-0">
       {/* container  */}
       <div className="bg-[#FC5B5B] md:w-[340px] w-full  text-white grid justify-center p-2 rounded-md">
         {/* order details  */}
@@ -27,7 +16,7 @@ const OrderSummary = ({ review }) => {
             click on confirm order button
           </p>
 
-          <form class="max-w-sm mx-auto">
+          <form class="max-w-sm mx-auto border-[1px] shadow-lg p-4 rounded-[15px]">
             <div class="mb-5">
               <label
                 for="name"

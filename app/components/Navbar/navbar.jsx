@@ -1,9 +1,9 @@
 "use client";
 
-import { useCartStore } from "@/app/store/Cart";
+import { CartContext } from "@/app/context/CartStore";
 import { Items } from "@/utilities/nav_items";
 import Link from "next/link";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FaCaretDown } from "react-icons/fa6";
 import { IoMdClose } from "react-icons/io";
 import { IoCallOutline } from "react-icons/io5";
@@ -22,8 +22,7 @@ export const Top = () => {
 
 // middle
 export const Middle = () => {
-  const { cartItems } = useCartStore();
-
+  const { cart } = useContext(CartContext);
   return (
     <div className="flex items-center justify-between gap-4 pr-4 md:pr-0 bg-white">
       <div className="h-[70px]  w-full grid grid-cols-12 bg-white md:px-10 px-1">
@@ -49,7 +48,7 @@ export const Middle = () => {
             <div className="relative">
               <img className="w-[35px]" src="/assets/icons/cart.png" alt="" />
               <p className="bg-[#FF4747] rounded-full flex justify-center items-center w-[20px] h-[20px] text-white text-[12px] absolute top-0 -right-2">
-                {cartItems.length}
+                {cart.length}
               </p>
             </div>
           </Link>

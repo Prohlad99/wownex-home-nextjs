@@ -64,13 +64,15 @@ export const Hero = () => {
 
 export const HeroBottom = () => {
   return (
-    <div className="md:h-[60px] h-auto bg-[#E9D8DC] md:mx-10 mx-2 my-4 grid grid-cols-2 md:grid-cols-4 items-center justify-items-center rounded-[15px] ">
+    <div className="md:h-[60px] h-auto bg-[#E9D8DC] md:mx-10 mx-2 my-4 gap-2 px-2 py-1 grid grid-cols-2 md:grid-cols-4 items-center justify-items-center rounded-[15px] ">
       <div>
         <span className="flex items-center gap-2">
           <span>
             <img src="/assets/icons/truck.png" alt="icon" />
           </span>
-          <span className="font-bold">Cash on Delivery</span>
+          <span className="font-bold text-sm md:text-base">
+            Cash on Delivery
+          </span>
         </span>
       </div>
       <div>
@@ -78,7 +80,9 @@ export const HeroBottom = () => {
           <span>
             <img src="/assets/icons/arrow.png" alt="icon" />
           </span>
-          <span className="font-bold">Cash on Delivery</span>
+          <span className="font-bold text-sm md:text-base">
+            Free & Easy Returns
+          </span>
         </span>
       </div>
       <div>
@@ -86,7 +90,9 @@ export const HeroBottom = () => {
           <span>
             <img src="/assets/icons/price.png" alt="icon" />
           </span>
-          <span className="font-bold">Cash on Delivery</span>
+          <span className="font-bold text-sm md:text-base">
+            Best Price Guaranteed
+          </span>
         </span>
       </div>
       <div>
@@ -94,7 +100,9 @@ export const HeroBottom = () => {
           <span>
             <img src="/assets/icons/star.png" alt="icon" />
           </span>
-          <span className="font-bold">Cash on Delivery</span>
+          <span className="font-bold text-sm md:text-base">
+            100% Authentic Products
+          </span>
         </span>
       </div>
     </div>

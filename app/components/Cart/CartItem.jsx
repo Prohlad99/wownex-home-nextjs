@@ -1,15 +1,15 @@
 "use client";
-import { useCartStore } from "@/app/store/Cart";
-import { products } from "./../../../utilities/products";
+import { CartContext } from "@/app/context/CartStore";
+import { useContext } from "react";
 const CartItem = () => {
-  const { cartItems } = useCartStore();
+  const { cart, removeFromCart ,updateQuantity} = useContext(CartContext);
 
   return (
     <div>
-      {products?.map((product) => (
+      {cart?.map((product) => (
         <div
           key={product.id}
-          className="my-3 shadow-lg text-white bg-[#FC5B5B] h-[100px] border-[1px] border-[#95A0A7] rounded-md items-center grid grid-cols-12 mx-1 md:mx-6"
+          className="my-3 shadow-lg relative text-white bg-[#FC5B5B] h-[100px] border-[1px] border-[#95A0A7] rounded-md items-center grid grid-cols-12 mx-1 md:mx-6"
         >
           {/* cart image  */}
           <div className="grid col-span-3">
@@ -36,22 +36,29 @@ const CartItem = () => {
             </h1>
             <div className="flex mt-3 mb-4">
               <button
-                onClick={() => console.log("Hello")}
+                onClick={() => updateQuantity(product.id, "decrease")}
                 className="border-l-[1px] border-b-[1px] border-t-[1px] rounded-l-md border-[#95A0A7] md:px-4 px-1 py-1 bg-black text-white"
               >
                 -
               </button>
-              <p className=" border-[1px] border-[#95A0A7] md:w-[80px] w-[30px] text-sm md:text-base text-center text-black bg-yellow-50">
-                {product.quantity ? product.quantity : 1}
+              <p className=" border-[1px] flex justify-center items-center border-[#95A0A7] md:w-[80px] w-[30px] text-sm md:text-base text-center text-black bg-yellow-50">
+                {product?.quantity}
               </p>
               <button
-                onClick={() => console.log("Hi")}
+                onClick={() => updateQuantity(product.id, "increase")}
                 className="border-r-[1px] border-b-[1px] border-t-[1px] rounded-r-md border-[#95A0A7] md:px-4 px-1 py-1 bg-green-400"
               >
                 +
               </button>
             </div>
           </div>
+
+          <button
+            onClick={() => removeFromCart(product.id)}
+            className="absolute -top-1 shadow-lg right-0 w-[25px] h-[25px] text-white font-semibold border-[1px] border-green-700 bg-red-800 rounded-full"
+          >
+            x
+          </button>
         </div>
       ))}
     </div>

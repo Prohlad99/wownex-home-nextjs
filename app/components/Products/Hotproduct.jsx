@@ -1,15 +1,28 @@
 "use client";
+import { animate, useInView } from "framer-motion";
+import { useEffect, useRef } from "react";
 import { BsCart3 } from "react-icons/bs";
-// import fire from "../../../assets/icons/fire.png";
-// import product from "../../../assets/products/riceCooker.png";
 
 const HotProduct = () => {
+  const priceRef = useRef(null);
+  const isInView = useInView(priceRef);
+
+  useEffect(() => {
+    const controls = animate(0, 19, {
+      duration: 1.2,
+      onUpdate(value) {
+        priceRef.current.textContent = `${value.toFixed()}%`;
+      },
+    });
+    return () => controls.stop();
+  }, [isInView]);
+
   return (
     <div className="md:mx-10 mx-2 h-auto  mt-6 bg-white  border-[1px] rounded-lg border-red-300">
       {/* header */}
       <div className="h-[60px] border-b-[2px] border-gray-200 flex items-center px-8">
         <span>
-          <h1 className="flex items-center font-bold text-xl">
+          <h1 className="flex items-center font-bold md:text-xl text-base sm:text-lg">
             <span className="text-[#FF4747] mr-1">HOT</span> Product of this
             Week
             <span>
@@ -21,10 +34,15 @@ const HotProduct = () => {
 
       {/* item  */}
       <div className="grid grid-cols-12 items-center px-8">
-        <div className="md:col-span-4 col-span-12 relative">
+        <div className="md:col-span-4 col-span-12 relative ">
           <img src="/assets/products/riceCooker.png" alt="" />
-          <div className="absolute top-0 left-2 w-[90px] h-[90px] bg-[#FF4747] rounded-full text-center flex justify-center items-center">
-            <p className="font-semibold text-[36px] text-white">19%</p>
+          <div className="mt-4 absolute top-0 left-2 md:w-[90px] md:h-[90px] h-[60px] w-[60px] sm:h-[70px] sm:w-[70px] bg-[#FF4747] rounded-full text-center flex justify-center items-center">
+            <p
+              ref={priceRef}
+              className="font-semibold md:text-[36px] text-[20px] sm:text-[25px] text-white"
+            >
+              19%
+            </p>
           </div>
         </div>
         <div className="md:col-span-8 col-span-12">
@@ -74,8 +92,8 @@ const HotProduct = () => {
           </div>
 
           {/* order button  */}
-          <div className="mb-3">
-            <button className="w-[195px] h-[28px] flex items-center gap-2 bg-[#FF4747] justify-center text-white rounded-[5px]">
+          <div className="mb-3 flex md:block justify-center items-center">
+            <button className="w-[195px]  h-[28px] flex items-center gap-2 bg-[#FF4747] justify-center text-white rounded-[5px]">
               <span>
                 <BsCart3 />
               </span>{" "}

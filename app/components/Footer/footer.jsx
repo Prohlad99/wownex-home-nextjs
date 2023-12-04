@@ -1,21 +1,34 @@
+"use client";
+import { motion } from "framer-motion";
 const Footer = () => {
+  const productsAnimation = {
+    visible: { y: 0, opacity: 1, transition: { duration: 0.5 } },
+    hidden: { y: 200, opacity: 1 },
+  };
   return (
-    <div className="mt-6">
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      variants={productsAnimation}
+      className="mt-6"
+    >
       <div className="h-[90px] bg-white grid grid-cols-2 justify-items-center items-center">
         <div>
-          <span className="flex items-center gap-4">
+          <span className="flex items-center md:gap-4 gap-2">
             <span>
               <img
-                className="w-[25px]"
+                className="md:w-[25px] sm:w-[20px] w-[18px]"
                 src="/assets/icons/mobile.png"
                 alt="icon"
               />
             </span>
-            <span className="text-2xl font-bold">Call Us</span>
+            <span className="md:text-2xl text-lg sm:text-xl font-bold">
+              Call Us
+            </span>
           </span>
         </div>
         <div>
-          <span className="flex items-center gap-4">
+          <span className="flex items-center md:gap-4 gap-2">
             <span>
               <img
                 className="w-[25px]"
@@ -23,7 +36,9 @@ const Footer = () => {
                 alt="icon"
               />
             </span>
-            <span className="text-2xl font-bold">Chat on WhatsApp</span>
+            <span className="md:text-2xl text-lg sm:text-xl font-bold">
+              Chat on WhatsApp
+            </span>
           </span>
         </div>
       </div>
@@ -44,10 +59,10 @@ const Footer = () => {
               </div>
               <div className=" flex justify-center">
                 <div>
-                  <h2 className="mb-4 text-2xl font-semibold text-black uppercase dark:text-white">
+                  <h2 className="mt-2 mb-4 md:text-2xl text-lg sm:text-xl font-semibold text-black uppercase dark:text-white">
                     Contact Us
                   </h2>
-                  <ul className="text-black dark:text-gray-400 font-medium font-serif">
+                  <ul className="text-black dark:text-gray-400 font-medium italic font-serif">
                     <li className="mb-1">Call us 10am-11pm (Everyday)</li>
                     <li className="mb-1 font-bold">+8801710-696950</li>
                     <li className="mb-1 font-bold">info@wownex.com</li>
@@ -61,7 +76,7 @@ const Footer = () => {
               </div>
               <div className=" flex justify-center">
                 <div>
-                  <h2 className="mb-4 text-2xl font-semibold text-gray-900 uppercase dark:text-white">
+                  <h2 className="mb-4 md:text-2xl text-lg sm:text-xl mt-2 font-semibold text-gray-900 uppercase dark:text-white">
                     Information
                   </h2>
                   <ul className="text-black font-serif dark:text-gray-400 font-medium">
@@ -106,7 +121,7 @@ const Footer = () => {
       <div className="flex bg-[#4A4A4A] items-center justify-center h-[64px] text-white">
         <p>Copyright 2023 WoWnex - All Rights Reserved</p>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
