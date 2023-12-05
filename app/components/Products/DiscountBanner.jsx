@@ -3,12 +3,12 @@ import { motion } from "framer-motion";
 
 const DiscountBanner = () => {
   const cardContent1 = {
-    visible: { x: 0, opacity: 1, transition: { duration: 1 } },
-    hidden: { x: 100, opacity: 0 },
+    visible: { y: 0, opacity: 1, transition: { duration: 0.5 } },
+    hidden: { y: 100, opacity: 0 },
   };
   const cardContent2 = {
-    visible: { x: 0, opacity: 1, transition: { duration: 1 } },
-    hidden: { x: -100, opacity: 0 },
+    visible: { y: 0, opacity: 1, transition: { duration: 0.5 } },
+    hidden: { y: 100, opacity: 1 },
   };
   return (
     <div className="grid grid-cols-12 gap-4  h-auto mt-6 mx-2 md:mx-10">
