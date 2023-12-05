@@ -15,7 +15,7 @@ const DiscountBanner = () => {
   return (
     <div className="grid grid-cols-12 gap-4  h-auto mt-6 mx-2 md:mx-10">
       <div
-        data-aos="zoom-in-right"
+        data-aos="zoom-in"
         className="col-span-12 md:col-span-6 h-[240px] relative cursor-pointer overflow-hidden rounded-[15px]"
       >
         <img
@@ -36,7 +36,7 @@ const DiscountBanner = () => {
         </div>
       </div>
       <div
-        data-aos="zoom-in-left"
+        data-aos="zoom-in"
         className="col-span-12 md:col-span-6 h-[240px] relative cursor-pointer overflow-hidden rounded-[15px]"
       >
         <img
