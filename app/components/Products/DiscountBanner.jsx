@@ -1,21 +1,21 @@
 "use client";
-import { motion } from "framer-motion";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 
 const DiscountBanner = () => {
-  const cardContent1 = {
-    visible: { y: 0, opacity: 1, transition: { duration: 0.5 } },
-    hidden: { y: 100, opacity: 0 },
-  };
-  const cardContent2 = {
-    visible: { y: 0, opacity: 1, transition: { duration: 0.5 } },
-    hidden: { y: 100, opacity: 1 },
-  };
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: false,
+      mirror: true,
+    });
+  }, []);
+
   return (
     <div className="grid grid-cols-12 gap-4  h-auto mt-6 mx-2 md:mx-10">
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        variants={cardContent2}
+      <div
+        data-aos="zoom-in-right"
         className="col-span-12 md:col-span-6 h-[240px] relative cursor-pointer overflow-hidden rounded-[15px]"
       >
         <img
@@ -34,11 +34,9 @@ const DiscountBanner = () => {
             SHOP NOW
           </p>
         </div>
-      </motion.div>
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        variants={cardContent1}
+      </div>
+      <div
+        data-aos="zoom-in-left"
         className="col-span-12 md:col-span-6 h-[240px] relative cursor-pointer overflow-hidden rounded-[15px]"
       >
         <img
@@ -58,7 +56,7 @@ const DiscountBanner = () => {
             TRIMMER
           </h1>
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 };

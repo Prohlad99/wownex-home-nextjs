@@ -1,4 +1,6 @@
 "use client";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import { animate, useInView } from "framer-motion";
 import { useEffect, useRef } from "react";
 import { BsCart3 } from "react-icons/bs";
@@ -17,6 +19,14 @@ const HotProduct = () => {
     return () => controls.stop();
   }, [isInView]);
 
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: false,
+      mirror: true,
+    });
+  }, []);
+
   return (
     <div className="md:mx-10 mx-2 h-auto  mt-6 bg-white  border-[1px] rounded-lg border-red-300">
       {/* header */}
@@ -34,7 +44,7 @@ const HotProduct = () => {
 
       {/* item  */}
       <div className="grid grid-cols-12 items-center px-8">
-        <div className="md:col-span-4 col-span-12 relative ">
+        <div data-aos="zoom-in" className="md:col-span-4 col-span-12 relative ">
           <img src="/assets/products/riceCooker.png" alt="" />
           <div className="mt-4 absolute top-0 left-2 md:w-[90px] md:h-[90px] h-[60px] w-[60px] sm:h-[70px] sm:w-[70px] bg-[#FF4747] rounded-full text-center flex justify-center items-center">
             <p

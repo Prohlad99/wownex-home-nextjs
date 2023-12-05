@@ -14,7 +14,6 @@ const CartStore = ({ children }) => {
   const addToCart = (product) => {
     const selectedProduct = cart.find((item) => item.id === product.id);
     if (selectedProduct) {
-      selectedProduct.quantity = selectedProduct.quantity + 1;
       toast("Item already have into cart!");
     } else {
       const newProduct = {
@@ -91,7 +90,7 @@ const CartStore = ({ children }) => {
     addToCart,
     removeFromCart,
     updateQuantity,
-    clearCart
+    clearCart,
   };
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 };

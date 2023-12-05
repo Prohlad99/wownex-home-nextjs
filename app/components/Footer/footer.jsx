@@ -1,17 +1,19 @@
 "use client";
-import { motion } from "framer-motion";
+
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
+
 const Footer = () => {
-  const productsAnimation = {
-    visible: { y: 0, opacity: 1, transition: { duration: 0.5 } },
-    hidden: { y: 200, opacity: 1 },
-  };
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: false,
+      mirror: true,
+    });
+  }, []);
   return (
-    <motion.div
-      initial="hidden"
-      whileInView="visible"
-      variants={productsAnimation}
-      className="mt-6"
-    >
+    <div data-aos="fade-up" className="mt-6">
       <div className="h-[90px] bg-white grid grid-cols-2 justify-items-center items-center">
         <div>
           <span className="flex items-center md:gap-4 gap-2">
@@ -121,7 +123,7 @@ const Footer = () => {
       <div className="flex bg-[#4A4A4A] items-center justify-center h-[64px] text-white">
         <p>Copyright 2023 WoWnex - All Rights Reserved</p>
       </div>
-    </motion.div>
+    </div>
   );
 };
 

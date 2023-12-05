@@ -2,8 +2,9 @@
 import RelatedProducts from "@/app/components/Products/RelatedProducts";
 import { CartContext } from "@/app/context/CartStore";
 import { ProductContext } from "@/app/context/ProductStore";
-import { motion } from "framer-motion";
-import { useContext, useState } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useContext, useEffect, useState } from "react";
 import { Toaster } from "react-hot-toast";
 import { CiDeliveryTruck } from "react-icons/ci";
 import { IoCallOutline, IoCartOutline, IoLogoWhatsapp } from "react-icons/io5";
@@ -47,10 +48,13 @@ const ProductDetails = () => {
     }
   }
 
-  const productsAnimation = {
-    visible: { y: 0, opacity: 1, transition: { duration: 0.5 } },
-    hidden: { y: 200, opacity: 1 },
-  };
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: false,
+      mirror: true,
+    });
+  }, []);
 
   return (
     <div>
@@ -255,10 +259,8 @@ const ProductDetails = () => {
           </div>
         </div>
 
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          variants={productsAnimation}
+        <div
+          data-aos="fade-up"
           className="col-span-12 mt-6 "
         >
           <div className="bg-[#E7E8EC] p-2 flex justify-center md:gap-10 gap-3 md:h-[50px] sm:h-[50px] h-auto rounded-t-[15px]">
@@ -332,7 +334,7 @@ const ProductDetails = () => {
               ""
             )}
           </div>
-        </motion.div>
+        </div>
 
         <div className="col-span-12 h-auto">
           <RelatedProducts />

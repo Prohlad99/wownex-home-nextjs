@@ -1,13 +1,20 @@
 "use client";
 import { products } from "@/utilities/products";
-import { motion } from "framer-motion";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import Link from "next/link";
+import { useEffect } from "react";
 import ProductCard from "./ProductCard";
+
 const NewProducts = () => {
-  const productsAnimation = {
-    visible: { y: 0, opacity: 1, transition: { duration: 0.5 } },
-    hidden: { y: 200, opacity: 1 },
-  };
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: false,
+      mirror: true,
+    });
+  }, []);
+
   return (
     <div className=" w-full h-auto px-2 md:px-10 mt-6">
       <div className="grid items-center h-[50px] border-b-[1px]  bg-white px-4 rounded-t-[15px] border-blue-400">
@@ -24,14 +31,9 @@ const NewProducts = () => {
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-4 bg-white p-4 rounded-b-[15px]">
         {products.map((product, index) => (
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            variants={productsAnimation}
-            key={index}
-          >
+          <div data-aos="fade-up" key={index}>
             <ProductCard product={product} />
-          </motion.div>
+          </div>
         ))}
       </div>
     </div>
